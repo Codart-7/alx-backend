@@ -11,6 +11,6 @@ def index_range(page: int, page_size: int) -> Tuple:
     for those particular pagination parameters.
     """
     data = page_size * page
-    start_index = page_size - data
+    start_index = data - page_size
     end_index = data
     return (start_index, end_index)
