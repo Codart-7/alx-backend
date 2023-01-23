@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""Simple pagination
-"""
+"""1. Simple pagination"""
 import csv
 import math
 from typing import List, Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple:
-    """The function returns a tuple of size two
-    containing a start index and an end index
-    corresponding to the range of indexes to return in a list
-    for those particular pagination parameters.
-    """
-    data = page_size * page
-    start_index = data - page_size
-    end_index = data
-    return (start_index, end_index)
+    '''
+        function should return a tuple of size two
+        containing a start index and an end index
+        corresponding to the range of indexes to return in a
+        list for those particular pagination parameters
+    '''
+    start_index = page * page_size - page_size
+    stop_index = page * page_size
+    return (start_index, stop_index)
 
 
 class Server:
@@ -38,11 +37,12 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """Get page"""
         assert type(page) == int and type(page_size) == int\
-          and (page > 0) and (page_size > 0)
+            and page > 0 and page_size > 0
         start, end = index_range(page, page_size)
         try:
             self.dataset()
             return self.__dataset[start:end]
         except IndexError:
-            return []
+            return[]
