@@ -16,10 +16,10 @@ class FIFOCache(BaseCaching):
         """to add a new item to the cache"""
         if key is not None and item is not None:
             if len(self.cache_data) == self.MAX_ITEMS\
-              and key not in self.cache_data.keys():
-                  discarded_key = list(self.cache_data.keys())[0]
-                  del self.cache_data[discarded_key]
-                  print("DISCARD: {}".format(discarded_key))
+                    and key not in self.cache_data.keys():
+                discarded_key = list(self.cache_data.keys())[0]
+                del self.cache_data[discarded_key]
+                print("DISCARD: {}".format(discarded_key))
             self.cache_data[key] = item
 
     def get(self, key):
