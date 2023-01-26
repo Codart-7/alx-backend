@@ -2,6 +2,7 @@
 """
 Basic caching system
 """
+BaseCaching = __import__("base_caching").BaseCaching
 
 
 class BasicCache(BaseCaching):
@@ -11,10 +12,8 @@ class BasicCache(BaseCaching):
         """init"""
         super().__init__()
 
-
     def put(self, key, item):
         """to add a new item to the cache"""
-
         if key is not None and item is not None:
             self.cache_data[key] = item
 
